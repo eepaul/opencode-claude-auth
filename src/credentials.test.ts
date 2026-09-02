@@ -125,6 +125,11 @@ async function loadCredentialsWithCountingKeychain(
     await readFile(new URL("./refresh-lock.ts", import.meta.url), "utf8"),
     "utf8",
   )
+  await writeFile(
+    join(tempDir, "model-config.ts"),
+    await readFile(new URL("./model-config.ts", import.meta.url), "utf8"),
+    "utf8",
+  )
   const rewritten = sourceCredentials
     .replace(/from\s+["']\.\/(\w+)\.js["']/g, 'from "./$1.ts"')
     .replace(
@@ -1467,6 +1472,11 @@ describe("syncAuthJson file permissions", () => {
         await readFile(new URL("./refresh-lock.ts", import.meta.url), "utf8"),
         "utf8",
       )
+      await writeFile(
+        join(tempDir, "model-config.ts"),
+        await readFile(new URL("./model-config.ts", import.meta.url), "utf8"),
+        "utf8",
+      )
       const rewritten = sourceCredentials.replace(
         /from\s+["']\.\/(\w+)\.js["']/g,
         'from "./$1.ts"',
@@ -1570,6 +1580,11 @@ export function buildAccountLabels(creds) { return creds.map((_, i) => \`Account
         await readFile(new URL("./refresh-lock.ts", import.meta.url), "utf8"),
         "utf8",
       )
+      await writeFile(
+        join(tempDir, "model-config.ts"),
+        await readFile(new URL("./model-config.ts", import.meta.url), "utf8"),
+        "utf8",
+      )
       const rewritten = sourceCredentials.replace(
         /from\s+["']\.\/(\w+)\.js["']/g,
         'from "./$1.ts"',
@@ -1639,6 +1654,7 @@ describe("refreshViaOAuth", () => {
     let requestUrl: string | null = null
     let requestBody: string | null = null
     let requestMethod: string | undefined
+    let requestUserAgent: string | null = null
 
     globalThis.fetch = (async (
       url: string | URL,
@@ -1647,6 +1663,7 @@ describe("refreshViaOAuth", () => {
       requestUrl = String(url)
       requestBody = String(init?.body ?? "")
       requestMethod = init?.method
+      requestUserAgent = new Headers(init?.headers).get("user-agent")
       return new Response(
         JSON.stringify({
           access_token: "sk-ant-oat01-fresh",
@@ -1666,6 +1683,7 @@ describe("refreshViaOAuth", () => {
       assert.equal(result.expiresAt, now + 28_800 * 1000)
       assert.equal(requestUrl, OAUTH_TOKEN_URL)
       assert.equal(requestMethod, "POST")
+      assert.equal(requestUserAgent, "claude-cli/2.1.257 (external, sdk-cli)")
       assert.match(String(requestBody), /grant_type=refresh_token/)
       assert.match(String(requestBody), /refresh_token=sk-ant-ort01-current/)
     } finally {
