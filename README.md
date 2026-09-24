@@ -59,9 +59,11 @@ Install the opencode-claude-auth plugin and configure it by following: https://r
 
    ```json
    {
-     "plugin": ["opencode-claude-auth@latest"]
+     "plugins": ["opencode-claude-auth@latest"]
    }
    ```
+
+   > OpenCode 1.x (1.18.29+) uses the `plugin` key instead of `plugins`. The same package works with both.
 
    > The `@latest` tag ensures OpenCode always pulls the newest version on startup. No manual `npm install` is needed — OpenCode [automatically installs npm plugins using Bun at startup](https://opencode.ai/docs/plugins/#how-plugins-are-installed).
 

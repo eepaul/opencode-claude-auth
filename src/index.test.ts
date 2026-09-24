@@ -809,7 +809,7 @@ export function buildAccountLabels(creds) { return creds.map((_, i) => \`Account
     })) as unknown as typeof setInterval
 
     try {
-      const plugin = await helpers.default({} as never)
+      const plugin = await helpers.ClaudeAuthPlugin({} as never)
       assert.equal(
         typeof plugin["experimental.chat.system.transform"],
         "function",
@@ -847,7 +847,7 @@ export function buildAccountLabels(creds) { return creds.map((_, i) => \`Account
     })) as unknown as typeof setInterval
 
     try {
-      const plugin = await helpers.default({} as never)
+      const plugin = await helpers.ClaudeAuthPlugin({} as never)
       const transform = plugin["experimental.chat.system.transform"] as (
         input: { model?: { providerID?: string } },
         output: { system: string[] },
@@ -891,7 +891,7 @@ export function buildAccountLabels(creds) { return creds.map((_, i) => \`Account
     globalThis.setInterval = (() => fakeTimer) as unknown as typeof setInterval
 
     try {
-      await helpers.default({} as never)
+      await helpers.ClaudeAuthPlugin({} as never)
       assert.ok(
         unrefCalled,
         "Expected .unref() to be called on the interval timer",
@@ -938,7 +938,7 @@ export function buildAccountLabels(creds) { return creds.map((_, i) => \`Account
         bRefreshResult: "success",
       })
 
-      const plugin = await helpersModule.default({} as never)
+      const plugin = await helpersModule.ClaudeAuthPlugin({} as never)
       assert.ok(
         tickCallback,
         "Expected setInterval to capture the tick callback",
@@ -1029,7 +1029,7 @@ export function buildAccountLabels(creds) { return creds.map((_, i) => \`Account
         bRefreshResult: "fail",
       })
 
-      const plugin = await helpersModule.default({} as never)
+      const plugin = await helpersModule.ClaudeAuthPlugin({} as never)
       assert.ok(tickCallback)
 
       const typedPlugin = plugin as {
@@ -1092,7 +1092,7 @@ export function buildAccountLabels(creds) { return creds.map((_, i) => \`Account
         return new Response("ok")
       }) as typeof fetch
 
-      const plugin = await helpersModule.default({} as never)
+      const plugin = await helpersModule.ClaudeAuthPlugin({} as never)
       const typedPlugin = plugin as { auth?: { loader?: TestAuthLoader } }
       assert.equal(typeof typedPlugin.auth?.loader, "function")
       const authConfig = await typedPlugin.auth!.loader!(
@@ -1150,7 +1150,7 @@ export function buildAccountLabels(creds) { return creds.map((_, i) => \`Account
           : new Response("ok", { status: 200 })
       }) as typeof fetch
 
-      const plugin = await helpersModule.default({} as never)
+      const plugin = await helpersModule.ClaudeAuthPlugin({} as never)
       const typedPlugin = plugin as { auth?: { loader?: TestAuthLoader } }
       assert.equal(typeof typedPlugin.auth?.loader, "function")
       const authConfig = await typedPlugin.auth!.loader!(
@@ -1233,7 +1233,7 @@ export function buildAccountLabels(creds) { return creds.map((_, i) => \`Account
           : new Response("data: {}\n\n", { status: 200 })
       }) as typeof fetch
 
-      const plugin = await helpersModule.default({} as never)
+      const plugin = await helpersModule.ClaudeAuthPlugin({} as never)
       const typedPlugin = plugin as { auth?: { loader?: TestAuthLoader } }
       const authConfig = await typedPlugin.auth!.loader!(
         async () => ({
@@ -1306,7 +1306,7 @@ export function buildAccountLabels(creds) { return creds.map((_, i) => \`Account
         })
       }) as typeof fetch
 
-      const plugin = await helpersModule.default({} as never)
+      const plugin = await helpersModule.ClaudeAuthPlugin({} as never)
       const typedPlugin = plugin as { auth?: { loader?: TestAuthLoader } }
       const authConfig = await typedPlugin.auth!.loader!(
         async () => ({
@@ -1381,7 +1381,7 @@ export function buildAccountLabels(creds) { return creds.map((_, i) => \`Account
           : new Response("data: {}\n\n", { status: 200 })
       }) as typeof fetch
 
-      const plugin = await helpersModule.default({} as never)
+      const plugin = await helpersModule.ClaudeAuthPlugin({} as never)
       const typedPlugin = plugin as { auth?: { loader?: TestAuthLoader } }
       const authConfig = await typedPlugin.auth!.loader!(
         async () => ({
@@ -1464,7 +1464,7 @@ export function buildAccountLabels(creds) { return creds.map((_, i) => \`Account
         })
       }) as typeof fetch
 
-      const plugin = await helpersModule.default({} as never)
+      const plugin = await helpersModule.ClaudeAuthPlugin({} as never)
       const typedPlugin = plugin as { auth?: { loader?: TestAuthLoader } }
       assert.equal(typeof typedPlugin.auth?.loader, "function")
       const authConfig = await typedPlugin.auth!.loader!(
@@ -1546,7 +1546,7 @@ export function buildAccountLabels(creds) { return creds.map((_, i) => \`Account
         warnings.push(args)
       }
 
-      const plugin = await helpersModule.default({} as never)
+      const plugin = await helpersModule.ClaudeAuthPlugin({} as never)
       const typedPlugin = plugin as { auth?: { loader?: TestAuthLoader } }
       assert.equal(typeof typedPlugin.auth?.loader, "function")
       const authConfig = await typedPlugin.auth!.loader!(
@@ -1625,7 +1625,7 @@ export function buildAccountLabels(creds) { return creds.map((_, i) => \`Account
         return new Response('{"error":"expired"}', { status: 401 })
       }) as typeof fetch
 
-      const plugin = await helpersModule.default({} as never)
+      const plugin = await helpersModule.ClaudeAuthPlugin({} as never)
       const typedPlugin = plugin as { auth?: { loader?: TestAuthLoader } }
       const authConfig = await typedPlugin.auth!.loader!(
         async () => ({
@@ -1699,7 +1699,7 @@ export function buildAccountLabels(creds) { return creds.map((_, i) => \`Account
         })
       }) as typeof fetch
 
-      const plugin = await helpersModule.default({} as never)
+      const plugin = await helpersModule.ClaudeAuthPlugin({} as never)
       const typedPlugin = plugin as { auth?: { loader?: TestAuthLoader } }
       const authConfig = await typedPlugin.auth!.loader!(
         async () => ({
@@ -1781,7 +1781,7 @@ export function buildAccountLabels(creds) { return creds.map((_, i) => \`Account
         return new Response("data: {}\n\n", { status: 200 })
       }) as typeof fetch
 
-      const plugin = await helpersModule.default({} as never)
+      const plugin = await helpersModule.ClaudeAuthPlugin({} as never)
       const typedPlugin = plugin as { auth?: { loader?: TestAuthLoader } }
       const authConfig = await typedPlugin.auth!.loader!(
         async () => ({
@@ -1854,7 +1854,7 @@ export function buildAccountLabels(creds) { return creds.map((_, i) => \`Account
         })
       }) as typeof fetch
 
-      const plugin = await helpersModule.default({} as never)
+      const plugin = await helpersModule.ClaudeAuthPlugin({} as never)
       const typedPlugin = plugin as { auth?: { loader?: TestAuthLoader } }
       const authConfig = await typedPlugin.auth!.loader!(
         async () => ({
@@ -1914,7 +1914,7 @@ export function buildAccountLabels(creds) { return creds.map((_, i) => \`Account
         })
       }) as typeof fetch
 
-      const plugin = await helpersModule.default({} as never)
+      const plugin = await helpersModule.ClaudeAuthPlugin({} as never)
       const typedPlugin = plugin as { auth?: { loader?: TestAuthLoader } }
       const authConfig = await typedPlugin.auth!.loader!(
         async () => ({
@@ -2349,5 +2349,249 @@ describe("refreshIfNeeded — token expiry", () => {
       refreshIfNeeded(makeCreds({ expiresAt: now + 60_001 }), now),
       "fresh",
     )
+  })
+})
+
+describe("V2 plugin", () => {
+  type Hook = (event: never) => Promise<void> | void
+
+  function makeFakeContext(connection: unknown) {
+    const hooks = new Map<string, Hook>()
+    const scopes = new Map<string, unknown>()
+    const methods: Array<Record<string, unknown>> = []
+    const connects: unknown[] = []
+    const ctx = {
+      session: {
+        async hook(name: string, callback: Hook, options?: unknown) {
+          hooks.set(name, callback)
+          scopes.set(name, options)
+          return { async dispose() {} }
+        },
+      },
+      model: {
+        async transform() {
+          return { async dispose() {} }
+        },
+        async reload() {},
+      },
+      integration: {
+        async transform(callback: (editor: unknown) => void) {
+          callback({
+            method: {
+              update(input: Record<string, unknown>) {
+                methods.push(input)
+              },
+            },
+          })
+          return { async dispose() {} }
+        },
+        connection: {
+          async active() {
+            return connection
+          },
+        },
+        oauth: {
+          async connect(input: unknown) {
+            connects.push(input)
+          },
+        },
+      },
+    }
+    return { ctx, hooks, scopes, methods, connects }
+  }
+
+  async function withPluginEnv<T>(run: () => Promise<T>): Promise<T> {
+    const originalNow = Date.now
+    const originalSetInterval = globalThis.setInterval
+    const originalHome = process.env.HOME
+    const originalFetch = globalThis.fetch
+    process.env.HOME = await mkdtemp(
+      join(tmpdir(), "opencode-claude-auth-home-"),
+    )
+    Date.now = () => 1_700_000_000_000
+    globalThis.setInterval = (() => ({
+      unref() {},
+    })) as unknown as typeof setInterval
+    try {
+      return await run()
+    } finally {
+      Date.now = originalNow
+      globalThis.setInterval = originalSetInterval
+      globalThis.fetch = originalFetch
+      if (typeof originalHome === "string") {
+        process.env.HOME = originalHome
+      } else {
+        delete process.env.HOME
+      }
+    }
+  }
+
+  const oauthConnection = {
+    type: "credential",
+    id: "c1",
+    label: "Claude",
+    method: "oauth",
+  }
+
+  it("default export carries both V2 setup and V1 server", async () => {
+    const { helpersModule } = await loadHelpersWithCountingKeychain(
+      Date.now() + 10 * 60_000,
+    )
+    const entry = helpersModule.default as unknown as Record<string, unknown>
+    assert.equal(entry.id, "opencode-claude-auth")
+    assert.equal(typeof entry.setup, "function")
+    assert.equal(entry.server, helpersModule.ClaudeAuthPlugin)
+  })
+
+  it("registers anthropic-scoped hooks and the Claude Code OAuth method", async () => {
+    await withPluginEnv(async () => {
+      const { helpersModule } = await loadHelpersWithCountingKeychain(
+        Date.now() + 10 * 60_000,
+      )
+      const fake = makeFakeContext(oauthConnection)
+      const cleanup = await helpersModule.ClaudeAuthPluginV2.setup(
+        fake.ctx as never,
+      )
+
+      for (const name of [
+        "context",
+        "compaction",
+        "generate",
+        "title",
+        "http.request",
+        "http.response",
+      ]) {
+        assert.ok(fake.hooks.has(name), `missing ${name} hook`)
+        assert.deepEqual(fake.scopes.get(name), { providerID: "anthropic" })
+      }
+      assert.equal(fake.methods.length, 1)
+      assert.equal(fake.methods[0].integrationID, "anthropic")
+      assert.deepEqual(
+        (fake.methods[0].method as { id: string; type: string }).type,
+        "oauth",
+      )
+      // An existing connection is never replaced.
+      await new Promise((resolve) => setImmediate(resolve))
+      assert.equal(fake.connects.length, 0)
+      assert.equal(typeof cleanup, "function")
+    })
+  })
+
+  it("connects the Claude Code method when no anthropic connection exists", async () => {
+    await withPluginEnv(async () => {
+      const { helpersModule } = await loadHelpersWithCountingKeychain(
+        Date.now() + 10 * 60_000,
+      )
+      const fake = makeFakeContext(undefined)
+      await helpersModule.ClaudeAuthPluginV2.setup(fake.ctx as never)
+      await new Promise((resolve) => setImmediate(resolve))
+      assert.deepEqual(fake.connects, [
+        { integrationID: "anthropic", methodID: "claude-code" },
+      ])
+    })
+  })
+
+  it("authorize returns the Claude Code credential in auto mode", async () => {
+    await withPluginEnv(async () => {
+      const { helpersModule } = await loadHelpersWithCountingKeychain(
+        Date.now() + 10 * 60_000,
+      )
+      const fake = makeFakeContext(oauthConnection)
+      await helpersModule.ClaudeAuthPluginV2.setup(fake.ctx as never)
+      const authorize = fake.methods[0].authorize as (
+        answer: Record<string, unknown>,
+      ) => Promise<{ mode: string; callback: Promise<Record<string, unknown>> }>
+      const authorization = await authorize({})
+      assert.equal(authorization.mode, "auto")
+      const credential = await authorization.callback
+      assert.equal(credential.type, "oauth")
+      assert.equal(credential.methodID, "claude-code")
+      assert.equal(credential.access, "token")
+      assert.equal(credential.refresh, "refresh")
+    })
+  })
+
+  it("context hook injects the identity prefix once", async () => {
+    await withPluginEnv(async () => {
+      const { helpersModule } = await loadHelpersWithCountingKeychain(
+        Date.now() + 10 * 60_000,
+      )
+      const fake = makeFakeContext(oauthConnection)
+      await helpersModule.ClaudeAuthPluginV2.setup(fake.ctx as never)
+      const event = { system: [{ type: "text", text: "Existing" }] }
+      await fake.hooks.get("context")!(event as never)
+      await fake.hooks.get("context")!(event as never)
+      assert.equal(event.system.length, 2)
+      assert.equal(event.system[0].text, helpersModule.SYSTEM_IDENTITY)
+    })
+  })
+
+  it("http hooks authenticate the request and recover from a 401", async () => {
+    await withPluginEnv(async () => {
+      const { helpersModule, keychainModule } =
+        await loadHelpersWithCountingKeychain(Date.now() + 10 * 60_000)
+      const fake = makeFakeContext(oauthConnection)
+      await helpersModule.ClaudeAuthPluginV2.setup(fake.ctx as never)
+
+      const event = {
+        request: new Request("https://api.anthropic.com/v1/messages", {
+          method: "POST",
+          headers: { "x-api-key": "host-key", "content-length": "1" },
+          body: JSON.stringify({ model: "claude-haiku-4-5", messages: [] }),
+        }),
+      }
+      await fake.hooks.get("http.request")!(event as never)
+
+      assert.equal(
+        event.request.url,
+        "https://api.anthropic.com/v1/messages?beta=true",
+      )
+      assert.equal(event.request.headers.get("authorization"), "Bearer token")
+      assert.equal(event.request.headers.get("x-api-key"), null)
+      assert.equal(event.request.headers.get("content-length"), null)
+
+      keychainModule.__setCredentials({
+        accessToken: "replacement-token",
+        refreshToken: "replacement-refresh",
+        expiresAt: Date.now() + 8 * 60 * 60_000,
+      })
+      const retried: string[] = []
+      globalThis.fetch = (async (_input, init) => {
+        retried.push(new Headers(init?.headers).get("authorization") ?? "")
+        return new Response("ok", { status: 200 })
+      }) as typeof fetch
+
+      const responseEvent = {
+        request: event.request,
+        response: new Response("revoked", { status: 401 }),
+      }
+      await fake.hooks.get("http.response")!(responseEvent as never)
+
+      assert.equal(responseEvent.response.status, 200)
+      assert.deepEqual(retried, ["Bearer replacement-token"])
+    })
+  })
+
+  it("http.request leaves API key connections untouched", async () => {
+    await withPluginEnv(async () => {
+      const { helpersModule } = await loadHelpersWithCountingKeychain(
+        Date.now() + 10 * 60_000,
+      )
+      const fake = makeFakeContext({
+        type: "credential",
+        id: "k1",
+        label: "Key",
+        method: "key",
+      })
+      await helpersModule.ClaudeAuthPluginV2.setup(fake.ctx as never)
+      const request = new Request("https://api.anthropic.com/v1/messages", {
+        method: "POST",
+        headers: { "x-api-key": "host-key" },
+        body: "{}",
+      })
+      const event = { request }
+      await fake.hooks.get("http.request")!(event as never)
+      assert.equal(event.request, request)
+    })
   })
 })
